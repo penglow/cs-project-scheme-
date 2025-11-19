@@ -35,7 +35,9 @@ def scheme_eval(expr, env, _=None): # Optional third argument is ignored
         return SPECIAL_FORMS[first](rest, env)
     else:
         # BEGIN PROBLEM 3
-        "*** YOUR CODE HERE ***"
+        operator=scheme_eval(first, env)
+        operands = map_link(lambda expr: scheme_eval(expr, env), rest)
+        return scheme_apply(operator, operands, env)
         # END PROBLEM 3
 
 def scheme_apply(procedure, args, env):
